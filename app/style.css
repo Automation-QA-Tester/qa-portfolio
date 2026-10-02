@@ -40,3 +40,39 @@ button {
 [hidden] {
   display: none;
 }
+
+#todo-error {
+  margin-top: 12px;
+  color: #b00020;
+}
+
+#todo-list {
+  list-style: none;
+  padding: 0;
+}
+
+#todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+#todo-list li span {
+  flex: 1;
+  word-break: break-word;
+}
+
+#todo-list li.completed span {
+  text-decoration: line-through;
+  color: #777777;
+}
+
+#todo-list input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+#todo-list button {
+  margin-top: 0;
+}

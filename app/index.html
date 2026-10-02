@@ -27,6 +27,16 @@
     <section id="welcome-section" hidden>
       <h2 id="welcome-heading" data-testid="welcome-heading"></h2>
       <button id="logout-button" type="button" data-testid="logout-button">Log out</button>
+
+      <h3>Todo list</h3>
+      <form id="todo-form" novalidate>
+        <label for="todo-input">New task</label>
+        <input id="todo-input" name="todo" type="text" autocomplete="off" data-testid="todo-input">
+        <button type="submit" data-testid="todo-add-button">Add task</button>
+        <p id="todo-error" role="alert" data-testid="todo-error"></p>
+      </form>
+      <ul id="todo-list" data-testid="todo-list"></ul>
+      <p id="todo-counter" data-testid="todo-counter"></p>
     </section>
   </main>
   <script src="app.js"></script>
