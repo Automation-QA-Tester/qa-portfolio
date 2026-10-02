@@ -34,4 +34,25 @@ cd qa-portfolio
 
 ## Install and run
 
-Instructions for installing dependencies, starting the test application and running the tests will be added as those parts of the project are built.
+Install the dependencies:
+
+```bash
+npm install
+```
+
+Start the test application:
+
+```bash
+npm start
+```
+
+Then open <http://localhost:3000> in a browser. Stop the server with `Ctrl + C`.
+
+### Demo credentials
+
+The login page accepts a fake demo account that exists only for practice and protects nothing:
+
+- Username: `demo`
+- Password: `demo-password`
+
+Instructions for running the automated tests will be added as they are built.
