@@ -1,0 +1,32 @@
+# Secrets and local configuration (never commit these)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_ed25519*
+id_rsa*
+
+# Node.js
+node_modules/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Playwright output
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Cypress output
+cypress/videos/
+cypress/screenshots/
+cypress/downloads/
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
