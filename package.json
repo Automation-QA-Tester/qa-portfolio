@@ -9,7 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "http-server app -p 3000 -c-1",
-    "test:playwright": "playwright test"
+    "test:playwright": "playwright test",
+    "cypress:run": "cypress run",
+    "test:cypress": "start-server-and-test start http://localhost:3000 cypress:run"
   },
   "repository": {
     "type": "git",
@@ -25,6 +27,8 @@
   "homepage": "https://github.com/Automation-QA-Tester/qa-portfolio#readme",
   "devDependencies": {
     "@playwright/test": "^1.63.0",
-    "http-server": "^14.1.1"
+    "cypress": "^16.1.1",
+    "http-server": "^14.1.1",
+    "start-server-and-test": "^3.0.12"
   }
 }
