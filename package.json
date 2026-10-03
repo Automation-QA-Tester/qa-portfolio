@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "http-server app -p 3000 -c-1"
+    "start": "http-server app -p 3000 -c-1",
+    "test:playwright": "playwright test"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/Automation-QA-Tester/qa-portfolio#readme",
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "http-server": "^14.1.1"
   }
 }
