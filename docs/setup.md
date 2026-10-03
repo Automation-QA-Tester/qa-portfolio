@@ -55,4 +55,28 @@ The login page accepts a fake demo account that exists only for practice and pro
 - Username: `demo`
 - Password: `demo-password`
 
-Instructions for running the automated tests will be added as they are built.
+## Automated tests
+
+### Playwright
+
+Install the browser used by the tests (one time only):
+
+```bash
+npx playwright install --with-deps chromium
+```
+
+On Linux and WSL, `--with-deps` also installs system libraries and asks for the `sudo` password.
+
+Run the tests. Playwright starts the application automatically, so no separate server is needed:
+
+```bash
+npm run test:playwright
+```
+
+Open the HTML report of the last run:
+
+```bash
+npx playwright show-report
+```
+
+Tests are in `tests/playwright/`. The behaviour they verify is described in [app-features.md](app-features.md).
