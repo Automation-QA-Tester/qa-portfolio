@@ -14,7 +14,7 @@ This document describes how the practice application in `app/` is tested. The ap
 ### Out of scope (for now)
 
 - Cross-browser testing (Playwright runs Chromium, Cypress runs Electron)
-- Mobile and responsive layout
+- Automated tests for the responsive layout (checked manually from 320 px width, see section 9)
 - Accessibility audit
 - Performance and security testing
 - Persistence: the application keeps no data after a page reload, by design
@@ -71,3 +71,39 @@ Defects are reported as GitHub Issues in this repository in English. Each report
 - Tests depend on `data-testid` attributes. If they are removed from the markup, the tests fail.
 - Only one browser engine per tool is used, so browser-specific defects can go unnoticed.
 - The application stores no data, so persistence-related defects cannot occur and are not tested.
+
+## 9. Exploratory testing
+
+### Session 1 (2026-10-03)
+
+**Charter:** Explore the login and the todo list. Find behaviour that is unexpected, inconsistent or different from [app-features.md](app-features.md).
+
+**Environment:** Desktop browser on Windows, application served locally with `npm start`.
+
+| Area | What was checked | Result |
+|---|---|---|
+| Login validation | Empty fields, only username, only password, wrong username, wrong password | As expected |
+| Login: letter case | `Demo` and `DEMO` as username | Rejected as invalid. Not specified; user names are case-sensitive |
+| Keyboard login | Tab and Enter | As expected |
+| Task text: special characters | `!@#$%^&*()`, `<b>test</b>`, `&amp;`, `\n` | Shown literally, no HTML is interpreted |
+| Task text: spaces | Only spaces, spaces before the text, many spaces between words | Only spaces rejected. Leading and trailing spaces are removed. Inner spaces count towards the 100 character limit and are collapsed on display. See [#12](https://github.com/Automation-QA-Tester/qa-portfolio/issues/12) |
+| Duplicate task names | Two tasks with the same text | Both created. Not specified |
+| Many tasks | 50 tasks | The page scrolls correctly. The counter is at the bottom of the list. See [#11](https://github.com/Automation-QA-Tester/qa-portfolio/issues/11) |
+| Checkbox by keyboard | Space and Enter | Space toggles the checkbox, Enter does not (standard checkbox behaviour) |
+| Focus after actions | Check, uncheck and delete with the keyboard | Focus is lost. See [#10](https://github.com/Automation-QA-Tester/qa-portfolio/issues/10) |
+| Page width | 320, 360 and 400 px in device emulation | No problems. The heading wraps below about 300 px and the card shrinks below about 470 px, which is expected. Supported width: from 320 px |
+| Page reload | F5 after login | Returns to the login form, by design |
+| Browser Back button | Back after login | Leaves the application. See [#13](https://github.com/Automation-QA-Tester/qa-portfolio/issues/13) |
+| Logout | Double click on Log out | As expected |
+| Clean-up | 50 tasks, then logout and login | List is empty, as specified |
+
+## 10. Known issues
+
+Issues are tracked in [GitHub Issues](https://github.com/Automation-QA-Tester/qa-portfolio/issues).
+
+| Issue | Type | Summary | Status |
+|---|---|---|---|
+| [#10](https://github.com/Automation-QA-Tester/qa-portfolio/issues/10) | bug | Keyboard focus is lost after toggling or deleting a task | Open |
+| [#11](https://github.com/Automation-QA-Tester/qa-portfolio/issues/11) | enhancement | Show the remaining tasks counter above the task list | Open |
+| [#12](https://github.com/Automation-QA-Tester/qa-portfolio/issues/12) | enhancement | Add a live character counter to the New task field | Open |
+| [#13](https://github.com/Automation-QA-Tester/qa-portfolio/issues/13) | enhancement | Browser Back button leaves the application after login | Open |
