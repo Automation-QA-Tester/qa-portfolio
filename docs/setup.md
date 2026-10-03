@@ -80,3 +80,29 @@ npx playwright show-report
 ```
 
 Tests are in `tests/playwright/`. The behaviour they verify is described in [app-features.md](app-features.md).
+
+### Cypress
+
+On Linux and WSL, install the system libraries Cypress needs. For Ubuntu 24.04 or newer:
+
+```bash
+sudo apt update
+sudo apt install -y libgtk-3-0t64 libgbm-dev libnotify-dev libnss3 libxss1 libasound2t64 libxtst6 xauth xvfb
+```
+
+On Ubuntu 22.04 the package names `libgtk-3-0` and `libasound2` have no `t64` suffix. `xvfb` provides a virtual display so Cypress can run without a window.
+
+Install the Cypress binary (needed if `npm install` skipped its install script) and verify it:
+
+```bash
+npx cypress install
+npx cypress verify
+```
+
+Run the tests. The application is started automatically and stopped after the run:
+
+```bash
+npm run test:cypress
+```
+
+Tests are in `cypress/e2e/`. Cypress currently runs them in Electron and prints a deprecation warning, which is expected.
