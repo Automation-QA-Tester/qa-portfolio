@@ -44,3 +44,7 @@ Every change goes through a branch and a pull request. The tests run automatical
 ## Status
 
 Work in progress. Known defects and ideas are tracked in GitHub Issues.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
