@@ -56,6 +56,11 @@ Techniques used: equivalence partitioning (valid and invalid credentials), bound
 | TODO-08 | Counter with several tasks | Counter `2 tasks left` after two tasks | yes | yes |
 | TODO-09 | Delete a task | Only the other task remains, counter is updated | yes | yes |
 | TODO-10 | Tasks are cleared after logout and login | List is empty, counter `No tasks yet.` | yes | yes |
+| TODO-11 | Focus stays on the checkbox after checking | The checkbox keeps focus | yes | yes |
+| TODO-12 | Focus stays on the checkbox after unchecking | The checkbox keeps focus | yes | yes |
+| TODO-13 | Focus after deleting a task | Focus moves to the checkbox of the next task | yes | yes |
+| TODO-14 | Focus after deleting the last task of the list | Focus moves to the checkbox of the previous task | yes | yes |
+| TODO-15 | Focus after deleting the only remaining task | Focus moves to the New task field | yes | yes |
 
 ## 6. Entry and exit criteria
 
@@ -103,7 +108,7 @@ Issues are tracked in [GitHub Issues](https://github.com/Automation-QA-Tester/qa
 
 | Issue | Type | Summary | Status |
 |---|---|---|---|
-| [#10](https://github.com/Automation-QA-Tester/qa-portfolio/issues/10) | bug | Keyboard focus is lost after toggling or deleting a task | Open |
+| [#10](https://github.com/Automation-QA-Tester/qa-portfolio/issues/10) | bug | Keyboard focus is lost after toggling or deleting a task | Fixed in [#18](https://github.com/Automation-QA-Tester/qa-portfolio/pull/18) |
 | [#11](https://github.com/Automation-QA-Tester/qa-portfolio/issues/11) | enhancement | Show the remaining tasks counter above the task list | Open |
 | [#12](https://github.com/Automation-QA-Tester/qa-portfolio/issues/12) | enhancement | Add a live character counter to the New task field | Open |
 | [#13](https://github.com/Automation-QA-Tester/qa-portfolio/issues/13) | enhancement | Browser Back button leaves the application after login | Open |

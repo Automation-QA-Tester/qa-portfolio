@@ -31,4 +31,15 @@ Counter text: `1 task left`, `N tasks left` (including `0 tasks left` when all a
 
 Selectors: `todo-input`, `todo-add-button`, `todo-error`, `todo-list`, `todo-item`, `todo-checkbox`, `todo-text`, `todo-delete-button`, `todo-counter`.
 
+## Keyboard focus
+
+Keyboard focus must not be lost when the list is redrawn. Checkboxes are toggled with the Space key, as usual for checkboxes.
+
+| Action | Expected focus |
+|---|---|
+| Check or uncheck a task | Focus stays on the checkbox of that task |
+| Delete a task that is not the last one | Focus moves to the checkbox of the task that took its place (the next one) |
+| Delete the last task of the list | Focus moves to the checkbox of the previous task |
+| Delete the only remaining task | Focus moves to the New task field |
+
 All selectors are `data-testid` attribute values.
