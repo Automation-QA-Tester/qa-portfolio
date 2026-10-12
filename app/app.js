@@ -72,7 +72,10 @@ todoForm.addEventListener("submit", function (event) {
   renderTodos();
 });
 
-function renderTodos() {
+// The list is redrawn after every change, which removes the element that had focus.
+// focusRequest says where keyboard focus should go after the redraw:
+// { todoId: n } focuses the checkbox of that task, { input: true } focuses the New task field.
+function renderTodos(focusRequest) {
   todoList.textContent = "";
 
   todos.forEach(function (todo) {
@@ -85,11 +88,12 @@ function renderTodos() {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = todo.done;
+    checkbox.setAttribute("data-todo-id", todo.id);
     checkbox.setAttribute("aria-label", "Mark task as done: " + todo.text);
     checkbox.setAttribute("data-testid", "todo-checkbox");
     checkbox.addEventListener("change", function () {
       todo.done = checkbox.checked;
-      renderTodos();
+      renderTodos({ todoId: todo.id });
     });
 
     const label = document.createElement("span");
@@ -102,10 +106,19 @@ function renderTodos() {
     deleteButton.setAttribute("aria-label", "Delete task: " + todo.text);
     deleteButton.setAttribute("data-testid", "todo-delete-button");
     deleteButton.addEventListener("click", function () {
+      const index = todos.findIndex(function (t) {
+        return t.id === todo.id;
+      });
       todos = todos.filter(function (t) {
         return t.id !== todo.id;
       });
-      renderTodos();
+
+      if (todos.length === 0) {
+        renderTodos({ input: true });
+      } else {
+        const next = todos[Math.min(index, todos.length - 1)];
+        renderTodos({ todoId: next.id });
+      }
     });
 
     item.append(checkbox, label, deleteButton);
@@ -120,5 +133,14 @@ function renderTodos() {
     todoCounter.textContent = "No tasks yet.";
   } else {
     todoCounter.textContent = remaining + (remaining === 1 ? " task left" : " tasks left");
+  }
+
+  if (focusRequest && focusRequest.input) {
+    todoInput.focus();
+  } else if (focusRequest && focusRequest.todoId !== undefined) {
+    const target = todoList.querySelector('[data-todo-id="' + focusRequest.todoId + '"]');
+    if (target) {
+      target.focus();
+    }
   }
 }

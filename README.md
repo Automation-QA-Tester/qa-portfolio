@@ -9,8 +9,8 @@ A portfolio of quality assurance work: a small practice web application, automat
 | Part | Description | Location |
 |---|---|---|
 | Practice application | Login and todo list in plain HTML, CSS and JavaScript | `app/` |
-| Playwright tests | 14 end-to-end tests | `tests/playwright/` |
-| Cypress tests | The same 14 scenarios | `cypress/e2e/` |
+| Playwright tests | 19 end-to-end tests | `tests/playwright/` |
+| Cypress tests | The same 19 scenarios | `cypress/e2e/` |
 | Test plan | Scope, approach, test cases, exploratory testing results | [docs/test-plan.md](docs/test-plan.md) |
 | Application features | Specification the tests are based on | [docs/app-features.md](docs/app-features.md) |
 | Setup guide | How to run everything locally | [docs/setup.md](docs/setup.md) |
